@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recarga Tigo</title>
+  <style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #dbeafe, #e0f2fe);
+  padding: 20px;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
+  color: #2563eb; /* Azul vivo */
+}
+
+form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 420px;
+  margin: auto;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); /* Azul con transparencia */
+  border: 2px solid #93c5fd; /* Borde azul pastel */
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 1em;
+  transition: border 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #60a5fa;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #25c3eb, #2563eb);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(to right, #25c3eb, #1d4ed8);
+  transform: scale(1.02);
+}
+
+.qr {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qr img {
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  border: 2px dashed #60a5fa;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  form {
+    padding: 15px;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    border: none;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 1440px) {
+  body {
+    font-size: 1.15em;
+  }
+
+  form {
+    max-width: 500px;
+  }
+
+  h2 {
+    font-size: 2.2em;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <h2>Recarga Tigo</h2>
+  <form onsubmit="enviarWhatsApp(); return false;">
+    <label>Número Tigo:</label>
+    <input type="text" id="numero" required>
+
+    <label>Monto (Bs.):</label>
+    <select id="monto" onchange="actualizarQR()">
+      <option value="13">13 bs - (Te llega 20 bs) </option>
+      <option value="23">23 bs - (Te llega 30 bs)</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+
+    <div class="qr">
+      <p>Escanea este QR para pagar:</p>
+      <img id="qrImagen" src="qrTigo/qr13.jpg" alt="QR">
+    </div>
+
+    <label>Comprobante de pago:</label>
+    <input type="file" accept="image/*" required>
+
+    <button type="submit">Enviar a WhatsApp</button>
+  </form>
+
+  <script>
+    function actualizarQR() {
+      const monto = document.getElementById("monto").value;
+      const qrImg = document.getElementById("qrImagen");
+      qrImg.src = `qrTigo/qr${monto}.jpg`;
+    }
+function enviarWhatsApp() {
+  const numero = document.getElementById("numero").value;
+  const monto = document.getElementById("monto").value;
+
+  const msg = `Hola, ya se realizó el pago. Por favor, recarga Tigo Bs. ${monto} al número ${numero}. Adjunto comprobante.`;
+
+  const url = `https://wa.me/+59162315600?text=${encodeURIComponent(msg)}`;
+  
+  
+  window.open(url, '_blank');
+}
+
+  </script>
+</body>
+</html>

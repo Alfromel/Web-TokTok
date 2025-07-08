@@ -1,0 +1,78 @@
+/* Reset básico y tipografía */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Top Nav */
+#templatemo_nav_top {
+  background-color: #343a40;
+  font-size: 0.9rem;
+}
+#templatemo_nav_top a {
+  color: #ccc;
+}
+#templatemo_nav_top a:hover {
+  color: #fff;
+}
+
+/* Navbar principal */
+.navbar {
+  padding: 0.6rem 1rem;
+}
+.navbar-brand.text-success {
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+.nav-icon {
+  position: relative;
+  margin-left: 1rem;
+}
+.nav-icon .badge {
+  font-size: 0.65rem;
+}
+
+/* Botón de búsqueda en móvil */
+.input-group-text i {
+  color: #fff;
+}
+
+/* Carrusel */
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+}
+.carousel-control-prev, .carousel-control-next {
+  font-size: 2rem;
+  opacity: 0.7;
+}
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  opacity: 1;
+}
+h1.h1.text-success {
+  font-size: 2.5rem;
+}
+
+/* Categorías estilo círculo */
+section.container .rounded-circle {
+  border: 4px solid #dee2e6;
+}
+
+/* Productos destacados */
+.card h2 {
+  font-size: 1.25rem;
+}
+.card-text {
+  font-size: 0.9rem;
+}
+.card ul {
+  margin-bottom: 0.5rem;
+}
+.card .fa-star.text-muted {
+  color: #ccc;
+}
+
+
