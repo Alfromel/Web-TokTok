@@ -1,157 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Recarga Tigo</title>
   <style>
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #dbeafe, #e0f2fe);
-  padding: 20px;
-  color: #333;
-}
+    :root {
+      --primary-color: #2563eb;
+      --primary-light: #60a5fa;
+      --primary-dark: #1d4ed8;
+      --bg-gradient-start: #dbdefe;
+      --bg-gradient-end: #e0f2fe;
+      --border-radius: 12px;
+      --shadow-color: rgba(37, 99, 235, 0.25);
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-h2 {
-  text-align: center;
-  font-size: 2em;
-  color: #2563eb; /* Azul vivo */
-}
+    * {
+      box-sizing: border-box;
+    }
 
-form {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 15px;
-  max-width: 420px;
-  margin: auto;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); /* Azul con transparencia */
-  border: 2px solid #93c5fd; /* Borde azul pastel */
-}
+    body {
+      font-family: var(--font-family);
+      margin: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      font-size: 1rem;
+    }
 
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  font-size: 1em;
-  transition: border 0.3s ease;
-}
+    main {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: var(--border-radius);
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 10px 25px var(--shadow-color);
+      border: 2px solid #93bdfd;
+    }
 
-input:focus, select:focus {
-  border-color: #60a5fa;
-  outline: none;
-}
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1.75rem;
+      font-size: 2.25rem;
+      user-select: none;
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 16px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1em;
-  font-weight: bold;
-  color: white;
-  background: linear-gradient(to right, #25c3eb, #2563eb);
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
 
-button:hover {
-  background: linear-gradient(to right, #25c3eb, #1d4ed8);
-  transform: scale(1.02);
-}
+    label {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      user-select: none;
+    }
 
-.qr {
-  text-align: center;
-  margin-top: 20px;
-}
+    input[type="text"],
+    select,
+    input[type="file"] {
+      padding: 0.85rem 1rem;
+      font-size: 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--border-radius);
+      transition: border-color 0.3s ease;
+      width: 100%;
+    }
 
-.qr img {
-  width: 200px;
-  max-width: 100%;
-  height: auto;
-  border: 2px dashed #60a5fa;
-  padding: 5px;
-  border-radius: 10px;
-}
+    input[type="text"]:focus,
+    select:focus,
+    input[type="file"]:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 6px var(--primary-light);
+    }
 
-@media (max-width: 768px) {
-  body {
-    padding: 15px;
-  }
+    button {
+      margin-top: 0.75rem;
+      padding: 1rem;
+      background: linear-gradient(to right, #25c3eb, var(--primary-color));
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
 
-  form {
-    padding: 15px;
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    border: none;
-  }
+    button:hover,
+    button:focus {
+      background: linear-gradient(to right, #25c3eb, var(--primary-dark));
+      transform: scale(1.04);
+      outline: none;
+    }
 
-  h2 {
-    font-size: 1.5em;
-  }
-}
+    .qr-container {
+      text-align: center;
+      margin-top: 1rem;
+    }
 
-@media (min-width: 1440px) {
-  body {
-    font-size: 1.15em;
-  }
+    .qr-container p {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      user-select: none;
+    }
 
-  form {
-    max-width: 500px;
-  }
+    .qr-container img {
+      width: 180px;
+      max-width: 100%;
+      border: 2px dashed var(--primary-light);
+      border-radius: 14px;
+      padding: 6px;
+      user-select: none;
+    }
 
-  h2 {
-    font-size: 2.2em;
-  }
-}
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem;
+        font-size: 1rem;
+      }
 
+      main {
+        padding: 1.5rem 1.75rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>Recarga Tigo</h2>
-  <form onsubmit="enviarWhatsApp(); return false;">
-    <label>Número Tigo:</label>
-    <input type="text" id="numero" required>
+  <main>
+    <h1>Recarga Tigo</h1>
+    <form id="recargaForm" novalidate>
+      <div>
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre"  required aria-required="true" />
+      </div>
 
-    <label>Monto (Bs.):</label>
-    <select id="monto" onchange="actualizarQR()">
-      <option value="13">13 bs - (Te llega 20 bs) </option>
-      <option value="23">23 bs - (Te llega 30 bs)</option>
-      <option value="20">20</option>
-      <option value="50">50</option>
-    </select>
+      <div>
+        <label for="numero">Número Tigo:</label>
+        <input type="text" id="numero" name="numero"  pattern="^[67][0-9]{7}$" required aria-required="true" aria-describedby="numeroHelp" />
+       
+      </div>
 
-    <div class="qr">
-      <p>Escanea este QR para pagar:</p>
-      <img id="qrImagen" src="qrTigo/qr13.jpg" alt="QR">
-    </div>
+      <div>
+        <label for="monto">Monto (Bs.):</label>
+        <select id="monto" name="monto" required aria-required="true" aria-label="Selecciona monto" >
+          <option value="14">14 bs = 20 bs</option>
+          <option value="28">28 bs = 40 bs</option>
+          <option value="42">42 Bs = 60 bs</option>
+          <option value="56">56 Bs = 80 bs</option>
+          <option value="70">70 bs = 100 bs</option>
+        </select>
+      </div>
 
-    <label>Comprobante de pago:</label>
-    <input type="file" accept="image/*" required>
 
-    <button type="submit">Enviar a WhatsApp</button>
-  </form>
+
+      <div class="qr-container" aria-live="polite">
+        <p>Escanea este QR para pagar:</p>
+        <img id="qrImagen" src="qrTigo/qr13.jpg" alt="Código QR para pago de 13 Bolivianos" />
+      </div>
+
+      <div>
+        <label for="comprobante">Comprobante de pago:</label>
+        <input type="file" id="comprobante" name="comprobante" accept="image/*" required aria-required="true" />
+      </div>
+
+      <button type="submit">Enviar a WhatsApp</button>
+    </form>
+  </main>
 
   <script>
-    function actualizarQR() {
-      const monto = document.getElementById("monto").value;
-      const qrImg = document.getElementById("qrImagen");
-      qrImg.src = `qrTigo/qr${monto}.jpg`;
-    }
-function enviarWhatsApp() {
-  const numero = document.getElementById("numero").value;
-  const monto = document.getElementById("monto").value;
+    (() => {
+      const form = document.getElementById('recargaForm');
+      const montoSelect = form.monto;
+      const qrImagen = document.getElementById('qrImagen');
 
-  const msg = `Hola, ya se realizó el pago. Por favor, recarga Tigo Bs. ${monto} al número ${numero}. Adjunto comprobante.`;
+      // Actualizar imagen QR cuando cambia el monto
+      montoSelect.addEventListener('change', () => {
+        const monto = montoSelect.value;
+        qrImagen.src = `qrTigo/qr${monto}.jpg`;
+        qrImagen.alt = `Código QR para pago de ${monto} Bolivianos`;
+      });
 
-  const url = `https://wa.me/+59162315600?text=${encodeURIComponent(msg)}`;
-  
-  
-  window.open(url, '_blank');
-}
+ 
+      // Función para enviar WhatsApp
+      function enviarWhatsApp(nombre, numero, monto) {
+        const mensaje = 
+          `Hola, ya se realizó el pago.\n\n` +
+          `👤 *Nombre:* ${nombre}\n` +
+          `📱 *Número Tigo:* ${numero}\n` +
+          `💸 *Monto:* Bs. ${monto}\n` +
+          `📎 Adjunto comprobante.`;
 
+        // Número destino (Bolivia +591)
+        const telefonoDestino = '+59162315600';
+        const urlWhatsApp = `https://wa.me/${telefonoDestino.replace(/\D/g, '')}?text=${encodeURIComponent(mensaje)}`;
+        
+        window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
+      }
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const nombre = form.nombre.value.trim();
+        const numero = form.numero.value.trim();
+        const monto = form.monto.value;
+
+        // Validaciones
+        if (!nombre) {
+          alert('Por favor, ingresa tu nombre completo.');
+          form.nombre.focus();
+          return;
+        }
+
+       
+
+        if (!form.comprobante.files.length) {
+          alert('Por favor, adjunta el comprobante de pago.');
+          form.comprobante.focus();
+          return;
+        }
+
+        // Aquí podrías implementar el envío del archivo si fuera necesario (no es posible enviarlo directamente a WhatsApp vía URL)
+
+        enviarWhatsApp(nombre, numero, monto);
+      });
+    })();
   </script>
 </body>
 </html>
