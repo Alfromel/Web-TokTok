@@ -192,3 +192,38 @@ section.container .rounded-circle {
     font-size: 0.9rem;
   }
 }
+
+.operador-container {
+    padding: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+}
+
+.operador-card {
+    background: linear-gradient(to top left, #ffffff, #f2f2f2);
+    border-radius: 15px;
+    padding: 1rem;
+    min-width: 130px;
+    width: 150px;
+    flex: 0 0 auto;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.operador-card:hover {
+    transform: translateY(-5px);
+}
+
+.logo-operador {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.logo-operador:hover {
+    transform: scale(1.05);
+}
+
