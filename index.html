@@ -222,36 +222,196 @@
                 </p>
             </div>
         </div>
-        <div class="row">
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="formularios/tigo.html"></a>
-             <img src="img/1.png" class="rounded-circle img-fluid border">
-             </a>
-             <h5 class="text-center mt-3 mb-3">TIGO</h5>
-             <p class="text-center">
-            <a href="formularios/tigo.html" class="btn btn-success">Recargar</a>
-             </p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-        
-             <img src="img/2.png" class="rounded-circle img-fluid border">
-             </a>
-             <h5 class="text-center mt-3 mb-3">ENTEL</h5>
-             <p class="text-center">
-            <a href="formularios/entel.html" class="btn btn-success">Recargar</a>
-             </p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-         
-             <img src="img/3.png" class="rounded-circle img-fluid border">
-             </a>
-             <h5 class="text-center mt-3 mb-3">VIVA</h5>
-             <p class="text-center">
-            <a href="formularios/viva.html" class="btn btn-success">Recargar</a>
-             </p>
-        </div>
 
+
+      <div class="row justify-content-center">
+    <div class="col-4 p-3 text-center">
+        <a href="formularios/tigo.html">
+            <img src="img/1.png" class="logo-operador rounded-circle img-fluid border">
+        </a>
+        <div class="nombre-operador">
+            <h5>TIGO</h5>
         </div>
+        <a href="formularios/tigo.html" class="btn btn-success btn-sm">Recargar</a>
+    </div>
+    <div class="col-4 p-3 text-center">
+        <a href="formularios/entel.html">
+            <img src="img/2.png" class="logo-operador rounded-circle img-fluid border">
+        </a>
+        <div class="nombre-operador">
+            <h5>ENTEL</h5>
+        </div>
+        <a href="formularios/entel.html" class="btn btn-success btn-sm">Recargar</a>
+    </div>
+    <div class="col-4 p-3 text-center">
+        <a href="formularios/viva.html">
+            <img src="img/3.png" class="logo-operador rounded-circle img-fluid border">
+        </a>
+        <div class="nombre-operador">
+            <h5>VIVA</h5>
+        </div>
+        <a href="formularios/viva.html" class="btn btn-success btn-sm">Recargar</a>
+    </div>
+</div>
+<br><br>
+
+<section id="diamantes" class="diamantes-section">
+  <div class="container text-center">
+    <h1 class="section-title">DIAMANTES</h1>
+    <p class="section-subtitle">
+      Obtén diamantes para Free Fire y Mobile Legends al instante, 100% seguros y sin comisiones ocultas.
+    </p>
+  </div>
+
+  <div class="recarga-cards">
+    <!-- Free Fire -->
+    <div class="recarga-card">
+      <img src="img/freefire_logo.png" alt="Free Fire" class="recarga-img" />
+      <h3 class="recarga-title ff">Free Fire</h3>
+      <a href="formularios/freefire.html" class="recargar-btn ff-btn">Recargar</a>
+    </div>
+
+    <!-- Mobile Legends -->
+    <div class="recarga-card">
+      <img src="img/mobilelegends_logo.png" alt="Mobile Legends" class="recarga-img" />
+      <h3 class="recarga-title ml">Mobile Legends</h3>
+      <a href="formularios/mobilelegends.html" class="recargar-btn ml-btn">Recargar</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* === SECCIÓN BASE === */
+.diamantes-section {
+  padding: 2rem 1rem;
+  background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+  text-align: center;
+}
+
+/* === TÍTULOS === */
+.section-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+/* === CONTENEDOR CARDS FLEXIBLE === */
+.recarga-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* === TARJETA INDIVIDUAL === */
+.recarga-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  flex: 1 1 250px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recarga-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* === IMAGEN CIRCULAR === */
+.recarga-img {
+  width: clamp(70px, 20vw, 90px);
+  height: clamp(70px, 20vw, 90px);
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* === TÍTULO DEL JUEGO === */
+.recarga-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.recarga-title.ff {
+  color: #e03e2f;
+}
+
+.recarga-title.ml {
+  color: #2a64c9;
+}
+
+/* === BOTÓN DE RECARGA === */
+.recargar-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.recargar-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.ff-btn {
+  background-color: #e03e2f;
+}
+
+.ff-btn:hover {
+  background-color: #c12c1a;
+}
+
+.ml-btn {
+  background-color: #2a64c9;
+}
+
+.ml-btn:hover {
+  background-color: #1d4db3;
+}
+
+/* === RESPONSIVE COMPLETO === */
+@media (max-width: 768px) {
+  .recarga-cards {
+    gap: 1rem;
+  }
+
+  .recarga-card {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .recarga-card {
+    flex: 1 1 260px;
+  }
+}
+</style>
+
+
     </section>
     <!-- End Categories of The Month -->
 
