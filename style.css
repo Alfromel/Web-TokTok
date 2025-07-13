@@ -24,6 +24,9 @@ body {
 #templatemo_nav_top a:hover {
   color: #fff;
 }
+#templatemo_nav_top .w-100 > div:first-child {
+  display: none;
+}
 
 /* Navbar principal */
 .navbar {
