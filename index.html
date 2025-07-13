@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 
 </head>
 
@@ -16,12 +17,7 @@
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                </div>
+              
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
@@ -109,106 +105,94 @@
 
 
 
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
+<section id="carousel-section" style="
+  height: 100vh; 
+  position: relative; 
+  color: white; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  padding: 2rem;
+  overflow: hidden;
+">
+
+  <!-- Fondos superpuestos para transición suave -->
+  <div id="bg1" style="
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-image: url('img/por.jpg');
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    z-index: 0;
+  "></div>
+  <div id="bg2" style="
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-image: url('img/tigo.jpg');
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    z-index: 0;
+  "></div>
+
+  <!-- Capa oscura -->
+  <div style="
+    position: absolute; 
+    top: 0; left: 0; right: 0; bottom: 0; 
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  "></div>
+
+  <!-- Contenido -->
+  <div style="position: relative; z-index: 2;">
+    <h1 style="font-size: 4rem; margin-bottom: 1rem;">TokTok</h1>
+    <p style="font-size: 1.5rem; margin-bottom: 2rem;">Recargas & Diamantes al instante</p>
+    <a href="#recargas" aria-label="Ver Recargas" style="padding: 1rem 2rem; background-color: rgba(255, 46, 99, 0.85); color: white; text-decoration: none; font-size: 1.2rem; border-radius: 10px;">Ver Recargas</a>
+  </div>
+</section>
+
+<script>
+  const backgrounds = [
+    "url('img/tigo.jpg')",
+    "url('img/viva.jpg')",
+    "url('img/entel.jpg')"
+  ];
+
+  let current = 0;
+  let next = 1;
+
+  const bg1 = document.getElementById('bg1');
+  const bg2 = document.getElementById('bg2');
+
+  // Asegurar que bg1 es visible al inicio
+  bg1.style.opacity = '1';
+  bg2.style.opacity = '0';
+
+  setInterval(() => {
+    // Si bg1 está visible, actualizamos bg2 y hacemos fade
+    if (bg1.style.opacity === '1') {
+      bg2.style.backgroundImage = backgrounds[next];
+      bg2.style.opacity = '1';  // fade in bg2
+      bg1.style.opacity = '0';  // fade out bg1
+    } else {
+      // Si bg2 está visible, actualizamos bg1 y hacemos fade
+      bg1.style.backgroundImage = backgrounds[next];
+      bg1.style.opacity = '1';  // fade in bg1
+      bg2.style.opacity = '0';  // fade out bg2
+    }
+
+    current = next;
+    next = (next + 1) % backgrounds.length;
+
+  }, 5000);
+</script>
 
 
-
-        <!-- Carrusel de Bootstrap -->
-<div id="carouselTokTok" class="carousel slide" data-bs-ride="carousel">
-    <!-- Indicadores -->
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselTokTok" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselTokTok" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselTokTok" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-
-    <!-- Contenido del carrusel -->
-    <div id="inicio" class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="img/358-3586445_tigo-2013-logo-de-tigo-bolivia.png" alt="Recargas Bolivia">
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left align-self-center">
-                            <h1 class="h1 text-success"><b>TokTok</b> Bolivia</h1>
-                            <h3 class="h2">Recargas en segundos</h3>
-                            <p>
-                                Realizá tus recargas Tigo, Viva, Entel y de diamantes para Free Fire y Mobile Legends al instante, 100% confiables.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="img/entel.png" alt="Recargas celulares">
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
-                            <h1 class="h1">Recargas móviles</h1>
-                            <h3 class="h2">Para todo Bolivia</h3>
-                            <p>
-                                Recargas a cualquier número Tigo, Entel y Viva sin importar tu ubicación. ¡Servicio rápido y seguro garantizado!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="img/freeeeee.jpg" alt="Diamantes Free Fire">
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
-                            <h1 class="h1">Free Fire y Mobile Legends</h1>
-                     
-                            <p>
-                                Recargas de diamantes con ID para Free Fire y Mobile Legends. Rápidas, seguras y sin comisiones ocultas.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controles del carrusel -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselTokTok" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselTokTok" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-    </button>
-</div>
-
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
-    </div>
     <!-- End Banner Hero -->
 
 
@@ -224,35 +208,35 @@
         </div>
 
 
-      <div class="row justify-content-center">
-    <div class="col-4 p-3 text-center">
+      <div class="d-flex justify-content-center flex-wrap operador-container gap-3">
+    <!-- TIGO -->
+    <div class="operador-card text-center">
         <a href="formularios/tigo.html">
-            <img src="img/1.png" class="logo-operador rounded-circle img-fluid border">
+            <img src="img/1.png" class="logo-operador border border-3 border-primary" alt="Tigo">
         </a>
-        <div class="nombre-operador">
-            <h5>TIGO</h5>
-        </div>
-        <a href="formularios/tigo.html" class="btn btn-success btn-sm">Recargar</a>
+        <h5 class="fw-bold text-primary mt-2">TIGO</h5>
+        <a href="formularios/tigo.html" class="btn btn-primary btn-sm w-75">Recargar</a>
     </div>
-    <div class="col-4 p-3 text-center">
+
+    <!-- ENTEL -->
+    <div class="operador-card text-center">
         <a href="formularios/entel.html">
-            <img src="img/2.png" class="logo-operador rounded-circle img-fluid border">
+            <img src="img/2.png" class="logo-operador border border-3 border-info" alt="Entel">
         </a>
-        <div class="nombre-operador">
-            <h5>ENTEL</h5>
-        </div>
-        <a href="formularios/entel.html" class="btn btn-success btn-sm">Recargar</a>
+        <h5 class="fw-bold text-info mt-2">ENTEL</h5>
+        <a href="formularios/entel.html" class="btn btn-info btn-sm text-white w-75">Recargar</a>
     </div>
-    <div class="col-4 p-3 text-center">
+
+    <!-- VIVA -->
+    <div class="operador-card text-center">
         <a href="formularios/viva.html">
-            <img src="img/3.png" class="logo-operador rounded-circle img-fluid border">
+            <img src="img/3.png" class="logo-operador border border-3 border-success" alt="Viva">
         </a>
-        <div class="nombre-operador">
-            <h5>VIVA</h5>
-        </div>
-        <a href="formularios/viva.html" class="btn btn-success btn-sm">Recargar</a>
+        <h5 class="fw-bold text-success mt-2">VIVA</h5>
+        <a href="formularios/viva.html" class="btn btn-success btn-sm w-75">Recargar</a>
     </div>
 </div>
+
 <br><br>
 
 <section id="diamantes" class="diamantes-section">
@@ -266,14 +250,14 @@
   <div class="recarga-cards">
     <!-- Free Fire -->
     <div class="recarga-card">
-      <img src="img/freefire_logo.png" alt="Free Fire" class="recarga-img" />
+      <img src="img/freefire.png" alt="Free Fire" class="recarga-img" />
       <h3 class="recarga-title ff">Free Fire</h3>
       <a href="formularios/freefire.html" class="recargar-btn ff-btn">Recargar</a>
     </div>
 
     <!-- Mobile Legends -->
     <div class="recarga-card">
-      <img src="img/mobilelegends_logo.png" alt="Mobile Legends" class="recarga-img" />
+      <img src="img/mobillegens.jpg" alt="Mobile Legends" class="recarga-img" />
       <h3 class="recarga-title ml">Mobile Legends</h3>
       <a href="formularios/mobilelegends.html" class="recargar-btn ml-btn">Recargar</a>
     </div>
@@ -410,6 +394,8 @@
   }
 }
 </style>
+
+
 
 
     </section>
