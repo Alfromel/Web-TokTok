@@ -5,15 +5,21 @@ body {
   padding: 0;
   line-height: 1.5;
   color: #333;
+  font-size: 16px;
 }
 
 /* Top Nav */
 #templatemo_nav_top {
   background-color: #343a40;
   font-size: 0.9rem;
+  padding: 0.3rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 #templatemo_nav_top a {
   color: #ccc;
+  text-decoration: none;
 }
 #templatemo_nav_top a:hover {
   color: #fff;
@@ -22,6 +28,10 @@ body {
 /* Navbar principal */
 .navbar {
   padding: 0.6rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 .navbar-brand.text-success {
   font-weight: bold;
@@ -44,24 +54,36 @@ body {
 .carousel-inner img {
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
   font-size: 2rem;
   opacity: 0.7;
 }
-.carousel-control-prev:hover, .carousel-control-next:hover {
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
   opacity: 1;
 }
 h1.h1.text-success {
   font-size: 2.5rem;
+  text-align: center;
 }
 
 /* Categorías estilo círculo */
 section.container .rounded-circle {
   border: 4px solid #dee2e6;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
+  margin: auto;
 }
 
 /* Productos destacados */
+.card {
+  margin-bottom: 1rem;
+}
 .card h2 {
   font-size: 1.25rem;
 }
@@ -75,4 +97,98 @@ section.container .rounded-circle {
   color: #ccc;
 }
 
+/* ====== MEDIA QUERIES PARA RESPONSIVIDAD ====== */
 
+/* Smartwatches y muy pequeñas pantallas */
+@media (max-width: 320px) {
+  body {
+    font-size: 12px;
+  }
+  h1.h1.text-success {
+    font-size: 1.2rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 576px) {
+  .navbar-brand.text-success {
+    font-size: 1.3rem;
+  }
+  .nav-icon {
+    margin-left: 0.5rem;
+  }
+  .card h2 {
+    font-size: 1rem;
+  }
+  .card-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-brand.text-success {
+    font-size: 1.5rem;
+  }
+}
+
+/* Televisores grandes y escritorios */
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
+  h1.h1.text-success {
+    font-size: 3rem;
+  }
+  .card h2 {
+    font-size: 1.5rem;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+}
+
+
+/* Imagenes de los operadores */
+.logo-operador {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Nombre del operador */
+.nombre-operador h5 {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+/* Botón más compacto */
+.btn-sm {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* Ajustes extra para pantallas pequeñas */
+@media (max-width: 768px) {
+  .col-4 {
+    padding: 10px 5px;
+  }
+  .logo-operador {
+    width: 80px;
+    height: 80px;
+  }
+  .nombre-operador h5 {
+    font-size: 0.9rem;
+  }
+}
