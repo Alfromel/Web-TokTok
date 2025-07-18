@@ -1,425 +1,588 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <title>Empresa TokTok</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0d47a1">
+    <title>TokTok - Recargas y Diamantes al Instante</title>
+    <meta name="description" content="Recargas móviles y diamantes para juegos al instante. Servicio rápido, seguro y confiable.">
     
-
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
 </head>
 
-<body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-              
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+<body class="bg-light">
+    <!-- Barra Superior (Redes Sociales) -->
+    <div class="top-bar bg-dark text-white py-2 d-none d-lg-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <span class="me-3 small"><i class="bi bi-headset me-2"></i>Soporte 24/7</span>
+                    <span class="small"><i class="bi bi-envelope me-2"></i>contacto@toktok.com</span>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
         </div>
-    </nav>
-    <!-- Close Top Nav -->
+    </div>
 
-
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                TokTok
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
+    <!-- Header Principal -->
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="img/TOKTOK-removebg-preview.png" alt="TokTok" height="33" class="d-inline-block align-top">
+                </a>
+                
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fw-medium active" href="#inicio">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#recargas">Recargas</a>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fw-medium" href="#recargas">Recargas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#diamantes">Diamantes</a>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fw-medium" href="#diamantes">Diamantes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Contacto</a>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fw-medium" href="#beneficios">Beneficios</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fw-medium" href="#contacto">Contacto</a>
                         </li>
                     </ul>
+                    
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="btn btn-outline-primary me-3 d-none d-lg-inline-flex">
+                            <i class="bi bi-person me-2"></i> Vip
+                        </a>
+                        <a href="#recargas" class="btn btn-primary">
+                            <i class="bi bi-wallet2 me-2"></i> Recargar
+                        </a>
+                    </div>
                 </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section position-relative overflow-hidden">
+        <div class="hero-slides">
+            <div class="hero-slide active" style="background-image: url('img/PORTADA.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/TIGO.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/ENTEL.jpg');"></div>
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="container position-relative z-index-1">
+            <div class="row min-vh-80 align-items-center py-5">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold text-white mb-4">Recargas y Diamantes al Instante</h1>
+                    <p class="lead text-white mb-5">El servicio más rápido y confiable para recargas móviles y compra de diamantes para tus juegos favoritos.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+                        <a href="#recargas" class="btn btn-primary btn-lg px-4 py-3">
+                            <i class="bi bi-lightning-charge-fill me-2"></i> Recargar Ahora
+                        </a>
+                        <a href="#diamantes" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="bi bi-gem me-2"></i> Comprar Diamantes
+                        </a>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </section>
+
+ <!-- Sección de Confianza -->
+<section class="confianza-section py-5 bg-white">
+    <div class="container">
+        <div class="confianza-grid row g-4 justify-content-center">
+            <div class="confianza-item col-6 col-md-3 text-center">
+                <div class="confianza-card p-3 rounded-3 bg-light">
+                    <i class="confianza-icon bi bi-lightning-charge-fill text-primary fs-1 mb-2"></i>
+                    <h3 class="confianza-title h5 mb-0">Instantáneo</h3>
+                </div>
+            </div>
+            <div class="confianza-item col-6 col-md-3 text-center">
+                <div class="confianza-card p-3 rounded-3 bg-light">
+                    <i class="confianza-icon bi bi-shield-lock-fill text-primary fs-1 mb-2"></i>
+                    <h3 class="confianza-title h5 mb-0">100% Seguro</h3>
+                </div>
+            </div>
+            <div class="confianza-item col-6 col-md-3 text-center">
+                <div class="confianza-card p-3 rounded-3 bg-light">
+                    <i class="confianza-icon bi bi-currency-exchange text-primary fs-1 mb-2"></i>
+                    <h3 class="confianza-title h5 mb-0">Sin Comisiones</h3>
+                </div>
+            </div>
+            <div class="confianza-item col-6 col-md-3 text-center">
+                <div class="confianza-card p-3 rounded-3 bg-light">
+                    <i class="confianza-icon bi bi-headset text-primary fs-1 mb-2"></i>
+                    <h3 class="confianza-title h5 mb-0">Soporte 24/7</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+    <!-- Sección de Recargas -->
+    <section id="recargas" class="py-6 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary-soft text-primary mb-3">Operadores móviles</span>
+                <h2 class="display-5 fw-bold mb-3">Recargas en Bolivia</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;">Recarga saldo a cualquier operador móvil en Bolivia al instante y sin complicaciones.</p>
+            </div>
+
+            <div class="text-center mt-5">
+                <div class="alert alert-info d-inline-flex align-items-center">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    No valida para doble carga.
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Tigo -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-xl bg-primary-soft text-primary rounded-circle mb-4 mx-auto">
+                                <img src="img/1.png" alt="Tigo" class="img-fluid" width="40">
+                            </div>
+                            <h3 class="h4 mb-3">Tigo</h3>
+                        
+                            <a href="formularios/tigo.html" class="btn btn-primary w-100">Recargar Tigo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Entel -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-xl bg-info-soft text-info rounded-circle mb-4 mx-auto">
+                                <img src="img/2.png" alt="Entel" class="img-fluid" width="40">
+                            </div>
+                            <h3 class="h4 mb-3">Entel</h3>
+                   
+                            <a href="formularios/entel.html" class="btn btn-info w-100 text-white">Recargar Entel</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Viva -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-xl bg-success-soft text-success rounded-circle mb-4 mx-auto">
+                                <img src="img/3.png" alt="Viva" class="img-fluid" width="40">
+                            </div>
+                            <h3 class="h4 mb-3">Viva</h3>
+             
+                            <a href="formularios/viva.html" class="btn btn-success w-100">Recargar Viva</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">
+                    <i class="bi bi-question-circle me-2"></i> ¿Cómo funciona?
+                </a>
+            </div>
+        </div>
+
+        
+    </section>
+    
+
+    <!-- Sección de Diamantes -->
+    <section id="diamantes" class="py-6 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-danger-soft text-danger mb-3">Juegos populares</span>
+                <h2 class="display-5 fw-bold mb-3">Diamantes para Juegos</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;">Compra diamantes, gemas y monedas para tus juegos favoritos al mejor precio.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Free Fire -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100 overflow-hidden">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-5 bg-danger-soft">
+                                <div class="h-100 d-flex align-items-center justify-content-center p-4">
+                                    <img src="img/freefire.png" alt="Free Fire" class="img-fluid" style="max-height: 120px;">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body p-4">
+                                    <h3 class="h4 mb-3">Free Fire Diamonds</h3>
+                           
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="badge bg-danger-soft text-danger">5% de descuento</span>
+                                        </div>
+                                        <a href="formularios/freefire.html" class="btn btn-danger">Comprar Diamantes</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                       
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                       
-                    </a>
+                </div>
+                
+                <!-- Mobile Legends -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100 overflow-hidden">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-5 bg-primary-soft">
+                                <div class="h-100 d-flex align-items-center justify-content-center p-4">
+                                    <img src="img/mobillegens.jpg" alt="Mobile Legends" class="img-fluid" style="max-height: 120px;">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body p-4">
+                                    <h3 class="h4 mb-3">Mobile Legends Diamonds</h3>
+                                   
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="badge bg-primary-soft text-primary">3% de descuento</span>
+                                        </div>
+                                        <a href="formularios/mobilelegends.html" class="btn btn-primary">Comprar Diamantes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
-    </nav>
-    <!-- Close Header -->
-
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
+            
+            <div class="text-center mt-5">
+                <div class="alert alert-info d-inline-flex align-items-center">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    Los diamantes se envían directamente a tu cuenta de juego en menos de 5 minutos.
                 </div>
-            </form>
-        </div>
-    </div>
-
-
-
-<section id="carousel-section" style="
-  height: 100vh; 
-  position: relative; 
-  color: white; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  text-align: center; 
-  padding: 2rem;
-  overflow: hidden;
-">
-
-  <!-- Fondos superpuestos para transición suave -->
-  <div id="bg1" style="
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-size: cover;
-    background-position: center;
-    background-image: url('img/por.jpg');
-    transition: opacity 1s ease-in-out;
-    opacity: 1;
-    z-index: 0;
-  "></div>
-  <div id="bg2" style="
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-size: cover;
-    background-position: center;
-    background-image: url('img/tigo.jpg');
-    transition: opacity 1s ease-in-out;
-    opacity: 0;
-    z-index: 0;
-  "></div>
-
-  <!-- Capa oscura -->
-  <div style="
-    position: absolute; 
-    top: 0; left: 0; right: 0; bottom: 0; 
-    background: rgba(0,0,0,0.5);
-    z-index: 1;
-  "></div>
-
-  <!-- Contenido -->
-  <div style="position: relative; z-index: 2;">
-    <h1 style="font-size: 4rem; margin-bottom: 1rem;">TokTok</h1>
-    <p style="font-size: 1.5rem; margin-bottom: 2rem;">Recargas & Diamantes al instante</p>
-    <a href="#recargas" aria-label="Ver Recargas" style="padding: 1rem 2rem; background-color: rgba(255, 46, 99, 0.85); color: white; text-decoration: none; font-size: 1.2rem; border-radius: 10px;">Ver Recargas</a>
-  </div>
-</section>
-
-<script>
-  const backgrounds = [
-    "url('img/tigo.jpg')",
-    "url('img/viva.jpg')",
-    "url('img/entel.jpg')"
-  ];
-
-  let current = 0;
-  let next = 1;
-
-  const bg1 = document.getElementById('bg1');
-  const bg2 = document.getElementById('bg2');
-
-  // Asegurar que bg1 es visible al inicio
-  bg1.style.opacity = '1';
-  bg2.style.opacity = '0';
-
-  setInterval(() => {
-    // Si bg1 está visible, actualizamos bg2 y hacemos fade
-    if (bg1.style.opacity === '1') {
-      bg2.style.backgroundImage = backgrounds[next];
-      bg2.style.opacity = '1';  // fade in bg2
-      bg1.style.opacity = '0';  // fade out bg1
-    } else {
-      // Si bg2 está visible, actualizamos bg1 y hacemos fade
-      bg1.style.backgroundImage = backgrounds[next];
-      bg1.style.opacity = '1';  // fade in bg1
-      bg2.style.opacity = '0';  // fade out bg2
-    }
-
-    current = next;
-    next = (next + 1) % backgrounds.length;
-
-  }, 5000);
-</script>
-
-
-    <!-- End Banner Hero -->
-
-
-    <!-- Start Categories of The Month -->
-    <section id="recargas" class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">PROMOCIONES RECARGAS</h1>
-                <p>
-                    Nuevas Promociones
-                </p>
             </div>
         </div>
-
-
-<div class="d-flex justify-content-center flex-wrap operador-container gap-3">
-    <!-- TIGO -->
-    <div class="operador-card text-center">
-        <a href="formularios/tigo.html">
-            <img src="img/1.png" class="logo-operador border border-3 border-primary" alt="Tigo">
-        </a>
-        <h5 class="fw-bold text-primary mt-2">TIGO</h5>
-        <a href="formularios/tigo.html" class="btn btn-primary btn-sm w-75">Recargar</a>
-    </div>
-
-    <!-- ENTEL -->
-    <div class="operador-card text-center">
-        <a href="formularios/entel.html">
-            <img src="img/2.png" class="logo-operador border border-3 border-info" alt="Entel">
-        </a>
-        <h5 class="fw-bold text-info mt-2">ENTEL</h5>
-        <a href="formularios/entel.html" class="btn btn-info btn-sm text-white w-75">Recargar</a>
-    </div>
-
-    <!-- VIVA -->
-    <div class="operador-card text-center">
-        <a href="formularios/viva.html">
-            <img src="img/3.png" class="logo-operador border border-3 border-success" alt="Viva">
-        </a>
-        <h5 class="fw-bold text-success mt-2">VIVA</h5>
-        <a href="formularios/viva.html" class="btn btn-success btn-sm w-75">Recargar</a>
-    </div>
-</div>
-
-
-<br><br>
-
-<section id="diamantes" class="diamantes-section">
-  <div class="container text-center">
-    <h1 class="section-title">DIAMANTES</h1>
-    <p class="section-subtitle">
-      Obtén diamantes para Free Fire y Mobile Legends al instante, 100% seguros y sin comisiones ocultas.
-    </p>
-  </div>
-
-  <div class="recarga-cards">
-    <!-- Free Fire -->
-    <div class="recarga-card">
-      <img src="img/freefire.png" alt="Free Fire" class="recarga-img" />
-      <h3 class="recarga-title ff">Free Fire</h3>
-      <a href="formularios/freefire.html" class="recargar-btn ff-btn">Recargar</a>
-    </div>
-
-    <!-- Mobile Legends -->
-    <div class="recarga-card">
-      <img src="img/mobillegens.jpg" alt="Mobile Legends" class="recarga-img" />
-      <h3 class="recarga-title ml">Mobile Legends</h3>
-      <a href="formularios/mobilelegends.html" class="recargar-btn ml-btn">Recargar</a>
-    </div>
-  </div>
-</section>
-
-<style>
-/* === SECCIÓN BASE === */
-.diamantes-section {
-  padding: 2rem 1rem;
-  background: linear-gradient(to bottom, #ffecd2, #fcb69f);
-  text-align: center;
-}
-
-/* === TÍTULOS === */
-.section-title {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #222;
-}
-
-.section-subtitle {
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  color: #444;
-  margin-bottom: 2rem;
-}
-
-/* === CONTENEDOR CARDS FLEXIBLE === */
-.recarga-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* === TARJETA INDIVIDUAL === */
-.recarga-card {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  flex: 1 1 250px;
-  max-width: 280px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.recarga-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* === IMAGEN CIRCULAR === */
-.recarga-img {
-  width: clamp(70px, 20vw, 90px);
-  height: clamp(70px, 20vw, 90px);
-  object-fit: contain;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-/* === TÍTULO DEL JUEGO === */
-.recarga-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #333;
-  text-align: center;
-}
-
-.recarga-title.ff {
-  color: #e03e2f;
-}
-
-.recarga-title.ml {
-  color: #2a64c9;
-}
-
-/* === BOTÓN DE RECARGA === */
-.recargar-btn {
-  background-color: #28a745;
-  color: white;
-  padding: 0.5rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.recargar-btn:hover {
-  background-color: #218838;
-  transform: scale(1.05);
-}
-
-.ff-btn {
-  background-color: #e03e2f;
-}
-
-.ff-btn:hover {
-  background-color: #c12c1a;
-}
-
-.ml-btn {
-  background-color: #2a64c9;
-}
-
-.ml-btn:hover {
-  background-color: #1d4db3;
-}
-
-/* === RESPONSIVE COMPLETO === */
-@media (max-width: 768px) {
-  .recarga-cards {
-    gap: 1rem;
-  }
-
-  .recarga-card {
-    max-width: 100%;
-    flex: 1 1 100%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .recarga-card {
-    flex: 1 1 260px;
-  }
-}
-</style>
-
-
-
-
     </section>
-    <!-- End Categories of The Month -->
 
+    <!-- Sección de Beneficios -->
+    <section id="beneficios" class="py-6 bg-gradient-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="badge bg-white text-primary mb-3">Beneficios exclusivos</span>
+                    <h2 class="display-5 fw-bold mb-4">¿Por qué elegir TokTok?</h2>
+                    <p class="lead mb-4">Ofrecemos el mejor servicio de recargas y compra de diamantes con múltiples beneficios para nuestros clientes.</p>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="icon-lg bg-white text-primary rounded-circle mb-3">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="h4 mb-2">Proceso Instantáneo</h3>
+                            <p class="mb-0">Tus recargas y diamantes se procesan en tiempo real, sin esperas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="icon-lg bg-white text-primary rounded-circle mb-3">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="h4 mb-2">Transacciones Seguras</h3>
+                            <p class="mb-0">Utilizamos tecnología de encriptación para proteger tus datos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <div class="icon-lg bg-white text-primary rounded-circle mb-3">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="h4 mb-2">Mejores Precios</h3>
+                            <p class="mb-0">Ofrecemos los precios más competitivos del mercado.</p>
+                        </div>
+                    </div>
+                </div>
+       
+            </div>
+        </div>
+    </section>
 
-    
-    <!-- End Featured Product -->
+    <!-- Sección de Testimonios -->
+    <section class="py-6 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary-soft text-primary mb-3">Opiniones reales</span>
+                <h2 class="display-5 fw-bold mb-3">Lo que dicen nuestros clientes</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;">Miles de usuarios confían en nosotros para sus recargas y compra de diamantes.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="img/user-1.jpg" class="rounded-circle me-3" width="50" height="50" alt="Usuario">
+                                <div>
+                                    <h5 class="mb-0">Carlos M.</h5>
+                                    <div class="text-warning small">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Increíble servicio, mi recarga llegó en segundos. Lo uso siempre para recargar mi saldo de Tigo."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="img/user-2.jpg" class="rounded-circle me-3" width="50" height="50" alt="Usuario">
+                                <div>
+                                    <h5 class="mb-0">Ana P.</h5>
+                                    <div class="text-warning small">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Compré diamantes para Free Fire y llegaron en 2 minutos. Los precios son los mejores que he visto."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="img/user-3.jpg" class="rounded-circle me-3" width="50" height="50" alt="Usuario">
+                                <div>
+                                    <h5 class="mb-0">Juan R.</h5>
+                                    <div class="text-warning small">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"El soporte al cliente es excelente. Tuve un problema y lo resolvieron en menos de 10 minutos."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">
+                    <i class="bi bi-chat-square-text me-2"></i> Ver más testimonios
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts.js"></script>
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-6 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <span class="badge bg-primary-soft text-primary mb-3">Contáctanos</span>
+                    <h2 class="display-5 fw-bold mb-4">Estamos aquí para ayudarte</h2>
+ 
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <h3 class="h4 mb-4">Envíanos un mensaje</h3>
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Tu nombre">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Correo electrónico</label>
+                                        <input type="email" class="form-control" placeholder="tu@email.com">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Asunto</label>
+                                        <input type="text" class="form-control" placeholder="¿Cómo podemos ayudarte?">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Mensaje</label>
+                                        <textarea class="form-control" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary w-100 py-2">
+                                            <i class="bi bi-send-fill me-2"></i> Enviar mensaje
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-6 pb-4">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <a href="index.html" class="d-inline-block mb-4">
+                        <img src="img/TOKTOK.jpg" alt="TokTok" height="40">
+                    </a>
+                    <p class="mb-4">El servicio más rápido y confiable para recargas móviles y compra de diamantes en Bolivia.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="h6 mb-4">Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#recargas" class="text-white-50 text-decoration-none">Recargas</a></li>
+                        <li class="mb-2"><a href="#diamantes" class="text-white-50 text-decoration-none">Diamantes</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Paquetes</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Promociones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="h6 mb-4">Empresa</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Carreras</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Socios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="h6 mb-4">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Términos</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacidad</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Seguridad</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Preguntas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h5 class="h6 mb-4">Descarga la App</h5>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm py-2">
+                            <i class="bi bi-apple me-2"></i> Muy pronto
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm py-2">
+                            <i class="bi bi-google-play me-2"></i> Muy pronto
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-white-50 mb-0">© 2025 TokTok. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-white-50 mb-0">Hecho por GC Empress</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/59162315600" class="whatsapp-btn" target="_blank" rel="noopener">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.min.js"></script>
     
     <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('✔️ SW registrado', reg))
-      .catch(err => console.error('❌ Error en SW', err));
-  }
-</script>
-
-
+        // Hero Slider
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        function showSlide(n) {
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroSlides[n].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Cambiar slide cada 5 segundos
+        setInterval(nextSlide, 5000);
+        
+        // Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('Service Worker registrado correctamente', reg))
+                    .catch(err => console.log('Error al registrar Service Worker', err));
+            });
+        }
+    </script>
 </body>
-
 </html>
