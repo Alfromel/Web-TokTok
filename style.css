@@ -1,232 +1,265 @@
-/* Reset básico y tipografía */
+/* styles.min.css */
+:root {
+    --primary: #2563eb;
+    --primary-soft: #dbeafe;
+    --secondary: #7c3aed;
+    --info: #0891b2;
+    --info-soft: #cffafe;
+    --success: #16a34a;
+    --success-soft: #dcfce7;
+    --danger: #dc2626;
+    --danger-soft: #fee2e2;
+    --warning: #d97706;
+    --dark: #1e293b;
+    --light: #f8fafc;
+}
+
+/* Base Styles */
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  color: #333;
-  font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    background-color: #f8fafc;
+    line-height: 1.6;
 }
 
-/* Top Nav */
-#templatemo_nav_top {
-  background-color: #343a40;
-  font-size: 0.9rem;
-  padding: 0.3rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-#templatemo_nav_top a {
-  color: #ccc;
-  text-decoration: none;
-}
-#templatemo_nav_top a:hover {
-  color: #fff;
-}
-#templatemo_nav_top .w-100 > div:first-child {
-  display: none;
+/* Typography */
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-/* Navbar principal */
-.navbar {
-  padding: 0.6rem 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-.navbar-brand.text-success {
-  font-weight: bold;
-  font-size: 1.7rem;
-}
-.nav-icon {
-  position: relative;
-  margin-left: 1rem;
-}
-.nav-icon .badge {
-  font-size: 0.65rem;
+.lead {
+    font-size: 1.25rem;
+    font-weight: 400;
 }
 
-/* Botón de búsqueda en móvil */
-.input-group-text i {
-  color: #fff;
+/* Buttons */
+.btn {
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
 }
 
-/* Carrusel */
-.carousel-inner img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.carousel-control-prev,
-.carousel-control-next {
-  font-size: 2rem;
-  opacity: 0.7;
-}
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  opacity: 1;
-}
-h1.h1.text-success {
-  font-size: 2.5rem;
-  text-align: center;
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
 }
 
-/* Categorías estilo círculo */
-section.container .rounded-circle {
-  border: 4px solid #dee2e6;
-  width: 100%;
-  max-width: 150px;
-  height: auto;
-  object-fit: cover;
-  margin: auto;
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
 }
 
-/* Productos destacados */
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Cards */
 .card {
-  margin-bottom: 1rem;
-}
-.card h2 {
-  font-size: 1.25rem;
-}
-.card-text {
-  font-size: 0.9rem;
-}
-.card ul {
-  margin-bottom: 0.5rem;
-}
-.card .fa-star.text-muted {
-  color: #ccc;
+    border: none;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ====== MEDIA QUERIES PARA RESPONSIVIDAD ====== */
-
-/* Smartwatches y muy pequeñas pantallas */
-@media (max-width: 320px) {
-  body {
-    font-size: 12px;
-  }
-  h1.h1.text-success {
-    font-size: 1.2rem;
-  }
-}
-
-/* Celulares */
-@media (max-width: 576px) {
-  .navbar-brand.text-success {
-    font-size: 1.3rem;
-  }
-  .nav-icon {
-    margin-left: 0.5rem;
-  }
-  .card h2 {
-    font-size: 1rem;
-  }
-  .card-text {
-    font-size: 0.85rem;
-  }
-}
-
-/* Tablets */
-@media (min-width: 577px) and (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* Laptops */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .navbar-brand.text-success {
-    font-size: 1.5rem;
-  }
-}
-
-/* Televisores grandes y escritorios */
-@media (min-width: 1200px) {
-  body {
-    font-size: 18px;
-  }
-  h1.h1.text-success {
-    font-size: 3rem;
-  }
-  .card h2 {
-    font-size: 1.5rem;
-  }
-  .card-text {
-    font-size: 1rem;
-  }
-}
-
-
-/* Imagenes de los operadores */
-.logo-operador {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-/* Nombre del operador */
-.nombre-operador h5 {
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
-/* Botón más compacto */
-.btn-sm {
-  padding: 0.3rem 0.8rem;
-  font-size: 0.85rem;
-}
-
-/* Ajustes extra para pantallas pequeñas */
-@media (max-width: 768px) {
-  .col-4 {
-    padding: 10px 5px;
-  }
-  .logo-operador {
-    width: 80px;
-    height: 80px;
-  }
-  .nombre-operador h5 {
-    font-size: 0.9rem;
-  }
-}
-
-.operador-container {
-    padding: 1rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-}
-
-.operador-card {
-    background: linear-gradient(to top left, #ffffff, #f2f2f2);
-    border-radius: 15px;
-    padding: 1rem;
-    min-width: 130px;
-    width: 150px;
-    flex: 0 0 auto;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.operador-card:hover {
+.card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
 }
 
-.logo-operador {
-    width: 80px;
-    height: 80px;
+/* Icons */
+.icon-lg {
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.icon-xl {
+    width: 4rem;
+    height: 4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Section Padding */
+.py-6 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Background Colors */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.bg-primary-soft {
+    background-color: var(--primary-soft);
+}
+
+.bg-info-soft {
+    background-color: var(--info-soft);
+}
+
+.bg-success-soft {
+    background-color: var(--success-soft);
+}
+
+.bg-danger-soft {
+    background-color: var(--danger-soft);
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #25d366;
+    color: white;
     border-radius: 50%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    z-index: 1000;
+    transition: transform 0.2s ease;
 }
 
-.logo-operador:hover {
-    transform: scale(1.05);
+.whatsapp-btn:hover {
+    color: white;
+    transform: scale(1.1);
 }
 
+/* Responsive Adjustments */
+@media (max-width: 767.98px) {
+    .hero-section {
+        min-height: 90vh;
+    }
+    
+    .display-5 {
+        font-size: 2.25rem;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+    }
+    
+    .py-6 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Versión alternativa móvil (2x2) */
+@media (max-width: 767.98px) {
+    .confianza-section.py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    .confianza-grid {
+        justify-content: center;
+    }
+    
+    .confianza-item {
+        width: 45%;
+        margin-bottom: 0.75rem;
+    }
+    
+    .confianza-card {
+        padding: 0.75rem !important;
+        min-height: 110px;
+    }
+    
+    .confianza-icon {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .confianza-title {
+        font-size: 0.8rem !important;
+    }
+}
