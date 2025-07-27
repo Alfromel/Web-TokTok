@@ -82,23 +82,9 @@
                 box-shadow: none;
             }
 
-            .status-bar {
-                height: 24px;
-                background-color: var(--primary);
-                position: sticky;
-                top: 0;
-                z-index: 1100;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 12px;
-                color: white;
-                font-size: 12px;
-            }
-
             .app-header {
                 position: sticky;
-                top: 24px;
+                top: 0;
                 z-index: 1000;
                 background-color: var(--bg-color);
                 height: var(--header-height);
@@ -179,10 +165,6 @@
                     "sidebar header"
                     "sidebar main";
                 min-height: 100vh;
-            }
-
-            .status-bar {
-                display: none;
             }
 
             .app-header {
@@ -895,15 +877,6 @@
 <body>
     <!-- App Container -->
     <div class="app-container">
-        <!-- Status Bar (Mobile) -->
-        <div class="status-bar d-lg-none">
-            <span id="current-time">10:24</span>
-            <div>
-                <i class="bi bi-wifi" style="margin-right: 8px;"></i>
-                <i class="bi bi-battery-full"></i>
-            </div>
-        </div>
-        
         <!-- Sidebar Overlay (Mobile) -->
         <div class="sidebar-overlay d-lg-none" id="sidebarOverlay"></div>
         
@@ -1179,9 +1152,6 @@
                 <span>Cuenta</span>
             </a>
         </nav>
-        
-        <!-- WhatsApp FAB -->
-       
     </div>
 
     <!-- Scripts -->
@@ -1189,18 +1159,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Actualizar hora en la status bar (mobile)
-            function updateTime() {
-                const now = new Date();
-                const timeElement = document.getElementById('current-time');
-                if (timeElement) {
-                    timeElement.textContent = now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0');
-                }
-            }
-            
-            updateTime();
-            setInterval(updateTime, 60000);
-            
             // Mobile menu toggle
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const appSidebar = document.getElementById('appSidebar');
