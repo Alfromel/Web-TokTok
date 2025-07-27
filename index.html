@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TokTok - Recargas y Diamantes al Instante</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>TokTok - Recargas y Diamantes</title>
     <meta name="description" content="Recargas móviles y diamantes para juegos al instante. Servicio rápido, seguro y confiable.">
     
     <!-- Favicon -->
@@ -18,571 +18,1265 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Manifest PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2563eb">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #ebefff;
+            --primary-extra-light: #f5f7ff;
+            --secondary: #7209b7;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #f8961e;
+            --info: #4895ef;
+            --dark: #1a1a2e;
+            --dark-light: #2a2a3a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --app-radius: 12px;
+            --app-radius-lg: 16px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --sidebar-width: 280px;
+            --header-height: 64px;
+            --bottom-nav-height: 60px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* App Container */
+        .app-container {
+            position: relative;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 991.98px) {
+            .app-container {
+                max-width: 100%;
+                margin: 0 auto;
+                box-shadow: none;
+            }
+
+            .status-bar {
+                height: 24px;
+                background-color: var(--primary);
+                position: sticky;
+                top: 0;
+                z-index: 1100;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 12px;
+                color: white;
+                font-size: 12px;
+            }
+
+            .app-header {
+                position: sticky;
+                top: 24px;
+                z-index: 1000;
+                background-color: var(--bg-color);
+                height: var(--header-height);
+                padding: 0 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .app-content {
+                flex: 1;
+                padding: 16px;
+                padding-bottom: calc(var(--bottom-nav-height) + 16px);
+            }
+
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: var(--bottom-nav-height);
+                background-color: var(--bg-color);
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+                z-index: 1000;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .app-sidebar {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background-color: var(--bg-color);
+                z-index: 1200;
+                transition: var(--transition);
+                padding: 24px;
+                overflow-y: auto;
+                box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .app-sidebar.open {
+                left: 0;
+            }
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1100;
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+            }
+
+            .sidebar-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 992px) {
+            .app-container {
+                display: grid;
+                grid-template-columns: var(--sidebar-width) 1fr;
+                grid-template-rows: auto 1fr;
+                grid-template-areas: 
+                    "sidebar header"
+                    "sidebar main";
+                min-height: 100vh;
+            }
+
+            .status-bar {
+                display: none;
+            }
+
+            .app-header {
+                grid-area: header;
+                position: sticky;
+                top: 0;
+                height: var(--header-height);
+                padding: 0 24px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                background-color: var(--bg-color);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                z-index: 100;
+            }
+
+            .app-sidebar {
+                grid-area: sidebar;
+                position: fixed;
+                width: var(--sidebar-width);
+                height: 100vh;
+                background-color: var(--bg-color);
+                border-right: 1px solid var(--gray-light);
+                padding: 24px;
+                overflow-y: auto;
+                z-index: 100;
+            }
+
+            .app-content {
+                grid-area: main;
+                padding: 24px;
+                max-width: 1440px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .bottom-nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Header Styles */
+        .logo {
+            height: 28px;
+        }
+
+        .logo-desktop {
+            display: block;
+            width: 80%;
+            max-width: 180px;
+            margin-bottom: 32px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle {
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        .desktop-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .desktop-nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: var(--app-radius);
+            text-decoration: none;
+            color: var(--gray);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .desktop-nav-item i {
+            font-size: 1.25rem;
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .desktop-nav-item.active, 
+        .desktop-nav-item:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 10px;
+            padding: 8px;
+            border-radius: var(--app-radius);
+            transition: var(--transition);
+            height: 100%;
+            flex: 1;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        /* User Menu */
+        .user-menu-desktop {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .user-avatar-desktop {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 600;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .user-info {
+            overflow: hidden;
+        }
+
+        .user-name {
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .user-status {
+            font-size: 0.75rem;
+            color: var(--gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Content Styles */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 24px;
+            }
+        }
+
+        .view-all {
+            font-size: 0.875rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            border-radius: var(--app-radius-lg);
+            overflow: hidden;
+            margin-bottom: 24px;
+            height: 180px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                height: 240px;
+                margin-bottom: 32px;
+            }
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .hero-section:hover .hero-image {
+            transform: scale(1.02);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .hero-text {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 16px;
+            max-width: 80%;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+                max-width: 60%;
+            }
+        }
+
+        /* Buttons */
+        .app-btn {
+            border-radius: var(--app-radius);
+            padding: 12px 20px;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .app-btn i {
+            margin-right: 8px;
+        }
+
+        .app-btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+
+        .app-btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+        }
+
+        .app-btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .app-btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .service-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 16px 8px;
+            border-radius: var(--app-radius);
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--app-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .service-desc {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        /* Cards */
+        .app-card {
+            background-color: var(--card-bg);
+            border-radius: var(--app-radius-lg);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Alert */
+        .app-alert {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: var(--app-radius);
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+        }
+
+        .app-alert i {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+
+        /* Operators Grid */
+        .operators-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .operators-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+
+        .operator-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            border-radius: var(--app-radius);
+            background-color: var(--primary-extra-light);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .operator-card:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .operator-logo {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 8px;
+            object-fit: contain;
+        }
+
+        .operator-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Games List */
+        .games-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .games-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+
+        .game-card {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: var(--app-radius);
+            background-color: var(--primary-extra-light);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .game-card:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .game-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 12px;
+            border-radius: var(--app-radius);
+            object-fit: cover;
+        }
+
+        .game-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .game-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .game-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: var(--app-radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+
+        .testimonial-user {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .testimonial-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .testimonial-rating {
+            color: var(--warning);
+            font-size: 0.75rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.875rem;
+            color: var(--dark-light);
+            line-height: 1.5;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+            z-index: 100;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        /* Utility Classes */
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+
+        .mb-2 {
+            margin-bottom: 8px !important;
+        }
+
+        .mb-3 {
+            margin-bottom: 16px !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 24px !important;
+        }
+
+        .mt-4 {
+            margin-top: 24px !important;
+        }
+
+        .gap-2 {
+            gap: 8px;
+        }
+
+        .gap-3 {
+            gap: 16px;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        /* Hide elements */
+        .d-none {
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .d-lg-none {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-light">
-    <!-- Barra Superior (Redes Sociales) -->
-    <div class="top-bar bg-dark text-white py-2 d-none d-lg-block">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <span class="me-3 small"><i class="bi bi-headset me-2"></i>Soporte 24/7</span>
-                    <span class="small"><i class="bi bi-envelope me-2"></i>contacto@toktok.com</span>
-                </div>
-                <div class="social-icons">
-                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
-                </div>
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Status Bar (Mobile) -->
+        <div class="status-bar d-lg-none">
+            <span id="current-time">10:24</span>
+            <div>
+                <i class="bi bi-wifi" style="margin-right: 8px;"></i>
+                <i class="bi bi-battery-full"></i>
             </div>
-        </div>
-    </div>
-
-    <!-- Header Principal -->
-    <header class="sticky-top bg-white shadow-sm">
-        <nav class="navbar navbar-expand-lg navbar-light py-3">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="img/TOKTOK-removebg-preview.png" alt="TokTok" height="33" class="d-inline-block align-top">
-                </a>
-                
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarMain">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item mx-2">
-                            <a class="nav-link fw-medium active" href="#inicio">Inicio</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link fw-medium" href="#recargas">Recargas</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link fw-medium" href="#diamantes">Diamantes</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link fw-medium" href="#beneficios">Beneficios</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link fw-medium" href="#contacto">Contacto</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="btn btn-outline-primary me-3 d-none d-lg-inline-flex">
-                            <i class="bi bi-person me-2"></i> Vip
-                        </a>
-                        <a href="#recargas" class="btn btn-primary">
-                            <i class="bi bi-wallet2 me-2"></i> Recargar
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-section position-relative overflow-hidden">
-        <div class="hero-slides">
-            <div class="hero-slide active" style="background-image: url('img/PORTADA.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('img/TIGO.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('img/ENTEL.jpg');"></div>
         </div>
         
-        <div class="hero-overlay"></div>
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay d-lg-none" id="sidebarOverlay"></div>
         
-        <div class="container position-relative z-index-1">
-            <div class="row min-vh-80 align-items-center py-5">
-                <div class="col-lg-7 text-center text-lg-start">
-                    <h1 class="display-4 fw-bold text-white mb-4">Recargas y Diamantes al Instante</h1>
-                    <p class="lead text-white mb-5">El servicio más rápido y confiable para recargas móviles y compra de diamantes para tus juegos favoritos.</p>
-                    
-                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-                        <a href="#recargas" class="btn btn-primary btn-lg px-4 py-3">
-                            <i class="bi bi-lightning-charge-fill me-2"></i> Recargar Ahora
-                        </a>
-                        <a href="#diamantes" class="btn btn-outline-light btn-lg px-4 py-3">
-                            <i class="bi bi-gem me-2"></i> Comprar Diamantes
-                        </a>
-                    </div>
-                </div>
-             
-            </div>
-        </div>
-    </section>
-
- <!-- Sección de Confianza -->
-<section class="confianza-section py-5 bg-white">
-    <div class="container">
-        <div class="confianza-grid row g-4 justify-content-center">
-            <div class="confianza-item col-6 col-md-3 text-center">
-                <div class="confianza-card p-3 rounded-3 bg-light">
-                    <i class="confianza-icon bi bi-lightning-charge-fill text-primary fs-1 mb-2"></i>
-                    <h3 class="confianza-title h5 mb-0">Instantáneo</h3>
-                </div>
-            </div>
-            <div class="confianza-item col-6 col-md-3 text-center">
-                <div class="confianza-card p-3 rounded-3 bg-light">
-                    <i class="confianza-icon bi bi-shield-lock-fill text-primary fs-1 mb-2"></i>
-                    <h3 class="confianza-title h5 mb-0">100% Seguro</h3>
-                </div>
-            </div>
-            <div class="confianza-item col-6 col-md-3 text-center">
-                <div class="confianza-card p-3 rounded-3 bg-light">
-                    <i class="confianza-icon bi bi-currency-exchange text-primary fs-1 mb-2"></i>
-                    <h3 class="confianza-title h5 mb-0">Sin Comisiones</h3>
-                </div>
-            </div>
-            <div class="confianza-item col-6 col-md-3 text-center">
-                <div class="confianza-card p-3 rounded-3 bg-light">
-                    <i class="confianza-icon bi bi-headset text-primary fs-1 mb-2"></i>
-                    <h3 class="confianza-title h5 mb-0">Soporte 24/7</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    
-    <!-- Sección de Recargas -->
-    <section id="recargas" class="py-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-primary-soft text-primary mb-3">Operadores móviles</span>
-                <h2 class="display-5 fw-bold mb-3">Recargas en Bolivia</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 600px;">Recarga saldo a cualquier operador móvil en Bolivia al instante y sin complicaciones.</p>
-            </div>
-
-            <div class="text-center mt-5">
-                <div class="alert alert-info d-inline-flex align-items-center">
-                    <i class="bi bi-info-circle-fill me-2"></i>
-                    No valida para doble carga.
-                </div>
-            </div>
+        <!-- App Sidebar -->
+        <aside class="app-sidebar" id="appSidebar">
+            <img src="img/TOKTOK-removebg-preview.png" alt="TokTok" class="logo-desktop">
             
-            <div class="row g-4">
-                <!-- Tigo -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center">
-                            <div class="icon-xl bg-primary-soft text-primary rounded-circle mb-4 mx-auto">
-                                <img src="img/1.png" alt="Tigo" class="img-fluid" width="40">
-                            </div>
-                            <h3 class="h4 mb-3">Tigo</h3>
-                        
-                            <a href="formularios/tigo.html" class="btn btn-primary w-100">Recargar Tigo</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Entel -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center">
-                            <div class="icon-xl bg-info-soft text-info rounded-circle mb-4 mx-auto">
-                                <img src="img/2.png" alt="Entel" class="img-fluid" width="40">
-                            </div>
-                            <h3 class="h4 mb-3">Entel</h3>
-                   
-                            <a href="formularios/entel.html" class="btn btn-info w-100 text-white">Recargar Entel</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Viva -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center">
-                            <div class="icon-xl bg-success-soft text-success rounded-circle mb-4 mx-auto">
-                                <img src="img/3.png" alt="Viva" class="img-fluid" width="40">
-                            </div>
-                            <h3 class="h4 mb-3">Viva</h3>
-             
-                            <a href="formularios/viva.html" class="btn btn-success w-100">Recargar Viva</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-outline-primary">
-                    <i class="bi bi-question-circle me-2"></i> ¿Cómo funciona?
+            <nav class="desktop-nav">
+                <a href="#" class="desktop-nav-item active">
+                    <i class="bi bi-house"></i>
+                    <span>Inicio</span>
                 </a>
+                <a href="#recargas" class="desktop-nav-item">
+                    <i class="bi bi-phone"></i>
+                    <span>Recargas</span>
+                </a>
+                <a href="#diamantes" class="desktop-nav-item">
+                    <i class="bi bi-gem"></i>
+                    <span>Diamantes</span>
+                </a>
+                <a href="#" class="desktop-nav-item">
+                    <i class="bi bi-wallet2"></i>
+                    <span>Pagos</span>
+                </a>
+                <a href="#" class="desktop-nav-item">
+                    <i class="bi bi-gift"></i>
+                    <span>Promociones</span>
+                </a>
+                <a href="https://wa.me/+59162315600" class="desktop-nav-item">
+                    <i class="bi bi-headset"></i>
+                    <span>Soporte</span>
+                </a>
+            </nav>
+            
+            <div class="user-menu-desktop">
+                <div class="user-avatar-desktop">
+                    <i class="bi bi-person"></i>
+                </div>
+                <div class="user-info">
+                    <div class="user-name">VIP</div>
+                    <div class="user-status">TOKTOK Member</div>
+                </div>
             </div>
-        </div>
-
+        </aside>
         
-    </section>
-    
-
-    <!-- Sección de Diamantes -->
-    <section id="diamantes" class="py-6 bg-white">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-danger-soft text-danger mb-3">Juegos populares</span>
-                <h2 class="display-5 fw-bold mb-3">Diamantes para Juegos</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 600px;">Compra diamantes, gemas y monedas para tus juegos favoritos al mejor precio.</p>
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-list mobile-menu-toggle d-lg-none" id="mobileMenuToggle"></i>
+                <img src="img/TOKTOK-removebg-preview.png" alt="TokTok" class="logo d-lg-none">
             </div>
+            <div class="user-avatar">
+                <i class="bi bi-person"></i>
+            </div>
+        </header>
+        
+        <!-- App Content -->
+        <main class="app-content">
+            <!-- Hero Banner -->
+            <section class="hero-section animate-fade" style="animation-delay: 0.1s">
+                <img src="img/PORTADA.jpg" alt="Recargas y Diamantes" class="hero-image">
+                <div class="hero-overlay">
+                    <h1 class="hero-title">Recargas y Diamantes</h1>
+                    <p class="hero-text">El servicio más rápido y confiable para recargas en Bolivia</p>
+                    <div class="hero-actions">
+                        <button class="app-btn app-btn-primary">
+                            <i class="bi bi-lightning-charge-fill"></i> Recargar
+                        </button>
+                        <button class="app-btn app-btn-outline">
+                            <i class="bi bi-gem"></i> Diamantes
+                        </button>
+                    </div>
+                </div>
+            </section>
             
-            <div class="row g-4">
-                <!-- Free Fire -->
-                <div class="col-md-6">
-                    <div class="card border-0 shadow-sm h-100 overflow-hidden">
-                        <div class="row g-0 h-100">
-                            <div class="col-md-5 bg-danger-soft">
-                                <div class="h-100 d-flex align-items-center justify-content-center p-4">
-                                    <img src="img/freefire.png" alt="Free Fire" class="img-fluid" style="max-height: 120px;">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body p-4">
-                                    <h3 class="h4 mb-3">Free Fire Diamonds</h3>
-                           
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <span class="badge bg-danger-soft text-danger">5% de descuento</span>
-                                        </div>
-                                        <a href="formularios/freefire.html" class="btn btn-danger">Comprar Diamantes</a>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Quick Services -->
+            <section class="animate-fade" style="animation-delay: 0.2s">
+                <h2 class="section-title">Servicios <a href="#" class="view-all">Ver todos</a></h2>
+                <div class="service-grid">
+                    <a href="#recargas" class="service-card">
+                        <div class="service-icon" style="background-color: var(--primary);">
+                            <i class="bi bi-phone"></i>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Mobile Legends -->
-                <div class="col-md-6">
-                    <div class="card border-0 shadow-sm h-100 overflow-hidden">
-                        <div class="row g-0 h-100">
-                            <div class="col-md-5 bg-primary-soft">
-                                <div class="h-100 d-flex align-items-center justify-content-center p-4">
-                                    <img src="img/mobillegens.jpg" alt="Mobile Legends" class="img-fluid" style="max-height: 120px;">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body p-4">
-                                    <h3 class="h4 mb-3">Mobile Legends Diamonds</h3>
-                                   
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <span class="badge bg-primary-soft text-primary">3% de descuento</span>
-                                        </div>
-                                        <a href="formularios/mobilelegends.html" class="btn btn-primary">Comprar Diamantes</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <div class="alert alert-info d-inline-flex align-items-center">
-                    <i class="bi bi-info-circle-fill me-2"></i>
-                    Los diamantes se envían directamente a tu cuenta de juego en menos de 5 minutos.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Beneficios -->
-    <section id="beneficios" class="py-6 bg-gradient-primary text-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <span class="badge bg-white text-primary mb-3">Beneficios exclusivos</span>
-                    <h2 class="display-5 fw-bold mb-4">¿Por qué elegir TokTok?</h2>
-                    <p class="lead mb-4">Ofrecemos el mejor servicio de recargas y compra de diamantes con múltiples beneficios para nuestros clientes.</p>
-                    
-                    <div class="d-flex mb-4">
-                        <div class="me-4">
-                            <div class="icon-lg bg-white text-primary rounded-circle mb-3">
-                                <i class="bi bi-lightning-charge-fill"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="h4 mb-2">Proceso Instantáneo</h3>
-                            <p class="mb-0">Tus recargas y diamantes se procesan en tiempo real, sin esperas.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex mb-4">
-                        <div class="me-4">
-                            <div class="icon-lg bg-white text-primary rounded-circle mb-3">
-                                <i class="bi bi-shield-lock-fill"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="h4 mb-2">Transacciones Seguras</h3>
-                            <p class="mb-0">Utilizamos tecnología de encriptación para proteger tus datos.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex">
-                        <div class="me-4">
-                            <div class="icon-lg bg-white text-primary rounded-circle mb-3">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="h4 mb-2">Mejores Precios</h3>
-                            <p class="mb-0">Ofrecemos los precios más competitivos del mercado.</p>
-                        </div>
-                    </div>
-                </div>
-       
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Testimonios -->
-    <section class="py-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-primary-soft text-primary mb-3">Opiniones reales</span>
-                <h2 class="display-5 fw-bold mb-3">Lo que dicen nuestros clientes</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 600px;">Miles de usuarios confían en nosotros para sus recargas y compra de diamantes.</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-4">
-                                <img src="img/user-1.jpg" class="rounded-circle me-3" width="50" height="50" alt="Usuario">
-                                <div>
-                                    <h5 class="mb-0">Carlos M.</h5>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mb-0">"Increíble servicio, mi recarga llegó en segundos. Lo uso siempre para recargar mi saldo de Tigo."</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-4">
-                                <img src="img/user-2.jpg" class="rounded-circle me-3" width="50" height="50" alt="Usuario">
-                                <div>
-                                    <h5 class="mb-0">Ana P.</h5>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mb-0">"Compré diamantes para Free Fire y llegaron en 2 minutos. Los precios son los mejores que he visto."</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-4">
-                                <img src="img/user-3.jpg" class="rounded-circle me-3" width="50" height="50" alt="Usuario">
-                                <div>
-                                    <h5 class="mb-0">Juan R.</h5>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mb-0">"El soporte al cliente es excelente. Tuve un problema y lo resolvieron en menos de 10 minutos."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-outline-primary">
-                    <i class="bi bi-chat-square-text me-2"></i> Ver más testimonios
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="py-6 bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <span class="badge bg-primary-soft text-primary mb-3">Contáctanos</span>
-                    <h2 class="display-5 fw-bold mb-4">Estamos aquí para ayudarte</h2>
- 
-                </div>
-                
-                <div class="col-lg-7">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-5">
-                            <h3 class="h4 mb-4">Envíanos un mensaje</h3>
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Tu nombre">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Correo electrónico</label>
-                                        <input type="email" class="form-control" placeholder="tu@email.com">
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Asunto</label>
-                                        <input type="text" class="form-control" placeholder="¿Cómo podemos ayudarte?">
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Mensaje</label>
-                                        <textarea class="form-control" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary w-100 py-2">
-                                            <i class="bi bi-send-fill me-2"></i> Enviar mensaje
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white pt-6 pb-4">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <a href="index.html" class="d-inline-block mb-4">
-                        <img src="img/TOKTOK.jpg" alt="TokTok" height="40">
+                        <h3 class="service-name">Recargas</h3>
+                        <p class="service-desc">Móvil al instante</p>
                     </a>
-                    <p class="mb-4">El servicio más rápido y confiable para recargas móviles y compra de diamantes en Bolivia.</p>
-                    <div class="social-icons">
-                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
-                    </div>
+                    <a href="#diamantes" class="service-card">
+                        <div class="service-icon" style="background-color: var(--danger);">
+                            <i class="bi bi-gem"></i>
+                        </div>
+                        <h3 class="service-name">Diamantes</h3>
+                        <p class="service-desc">Para tus juegos</p>
+                    </a>
+                    <a href="#" class="service-card">
+                        <div class="service-icon" style="background-color: var(--success);">
+                            <i class="bi bi-wallet2"></i>
+                        </div>
+                        <h3 class="service-name">Pagos</h3>
+                        <p class="service-desc">Servicios básicos</p>
+                    </a>
+                    <a href="#" class="service-card">
+                        <div class="service-icon" style="background-color: var(--warning);">
+                            <i class="bi bi-gift"></i>
+                        </div>
+                        <h3 class="service-name">Promos</h3>
+                        <p class="service-desc">Ofertas especiales</p>
+                    </a>
                 </div>
-                
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="h6 mb-4">Servicios</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#recargas" class="text-white-50 text-decoration-none">Recargas</a></li>
-                        <li class="mb-2"><a href="#diamantes" class="text-white-50 text-decoration-none">Diamantes</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Paquetes</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Promociones</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="h6 mb-4">Empresa</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Nosotros</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Blog</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Carreras</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Socios</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="h6 mb-4">Legal</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Términos</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacidad</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Seguridad</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Preguntas</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2">
-                    <h5 class="h6 mb-4">Descarga la App</h5>
-                    <div class="d-flex flex-column gap-2">
-                        <a href="#" class="btn btn-outline-light btn-sm py-2">
-                            <i class="bi bi-apple me-2"></i> Muy pronto
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm py-2">
-                            <i class="bi bi-google-play me-2"></i> Muy pronto
-                        </a>
-                    </div>
-                </div>
-            </div>
+            </section>
             
-            <hr class="my-4 border-secondary">
-            
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="small text-white-50 mb-0">© 2025 TokTok. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="small text-white-50 mb-0">Hecho por GC Empress</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+            <!-- Recargas Section -->
+            <section id="recargas" class="animate-fade" style="animation-delay: 0.3s">
+                <h2 class="section-title">Recargas Móviles <a href="#" class="view-all">Ver todos</a></h2>
+                
+                <div class="app-card">
+                    <div class="app-alert">
+                        <i class="bi bi-info-circle-fill"></i>
+                        No válido para doble carga
+                    </div>
+                    
+                    <div class="operators-grid">
+                        <!-- Tigo -->
+                        <a href="formularios/tigo.html" class="operator-card">
+                            <img src="img/1.png" alt="Tigo" class="operator-logo">
+                            <span class="operator-name">Tigo</span>
+                        </a>
+                        
+                        <!-- Entel -->
+                        <a href="formularios/entel.html" class="operator-card">
+                            <img src="img/2.png" alt="Entel" class="operator-logo">
+                            <span class="operator-name">Entel</span>
+                        </a>
+                        
+                        <!-- Viva -->
+                        <a href="formularios/viva.html" class="operator-card">
+                            <img src="img/3.png" alt="Viva" class="operator-logo">
+                            <span class="operator-name">Viva</span>
+                        </a>
 
-    <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/59162315600" class="whatsapp-btn" target="_blank" rel="noopener">
-        <i class="bi bi-whatsapp"></i>
-    </a>
+                        <!-- Más operadores (visible solo en desktop) -->
+                        <a href="#" class="operator-card d-none d-md-flex">
+                            <img src="img/4.png" alt="Otros" class="operator-logo">
+                            <span class="operator-name">Más Operadores</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Diamantes Section -->
+            <section id="diamantes" class="animate-fade" style="animation-delay: 0.4s">
+                <h2 class="section-title">Diamantes para Juegos <a href="#" class="view-all">Ver todos</a></h2>
+                
+                <div class="app-card">
+                    <div class="app-alert">
+                        <i class="bi bi-info-circle-fill"></i>
+                        Entrega en menos de 5 minutos
+                    </div>
+                    
+                    <div class="games-list">
+                        <!-- Free Fire -->
+                        <a href="formularios/freefire.html" class="game-card">
+                            <img src="img/freefire.png" alt="Free Fire" class="game-logo">
+                            <div class="game-info">
+                                <h3 class="game-name">Free Fire Diamonds</h3>
+                                <span class="game-badge">5% descuento</span>
+                            </div>
+                        </a>
+                        
+                        <!-- Mobile Legends -->
+                        <a href="formularios/mobilelegends.html" class="game-card">
+                            <img src="img/mobillegens.jpg" alt="Mobile Legends" class="game-logo">
+                            <div class="game-info">
+                                <h3 class="game-name">Mobile Legends Diamonds</h3>
+                                <span class="game-badge">3% descuento</span>
+                            </div>
+                        </a>
+
+                        <!-- Más juegos (visible solo en desktop) -->
+                        <a href="#" class="game-card d-none d-md-flex">
+                            <img src="img/cod.jpg" alt="Call of Duty" class="game-logo">
+                            <div class="game-info">
+                                <h3 class="game-name">Call of Duty Points</h3>
+                                <span class="game-badge">2% descuento</span>
+                            </div>
+                        </a>
+
+                        <a href="#" class="game-card d-none d-md-flex">
+                            <img src="img/pubg.jpg" alt="PUBG Mobile" class="game-logo">
+                            <div class="game-info">
+                                <h3 class="game-name">PUBG Mobile UC</h3>
+                                <span class="game-badge">4% descuento</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonios -->
+            <section class="animate-fade" style="animation-delay: 0.5s">
+                <h2 class="section-title">Opiniones de Clientes</h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="img/user-1.jpg" alt="Carlos M." class="testimonial-avatar">
+                            <div class="testimonial-user">
+                                <h3 class="testimonial-name">Carlos M.</h3>
+                                <div class="testimonial-rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Increíble servicio, mi recarga llegó en segundos. Lo uso siempre para recargar mi saldo de Tigo."</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="img/user-2.jpg" alt="Ana P." class="testimonial-avatar">
+                            <div class="testimonial-user">
+                                <h3 class="testimonial-name">Ana P.</h3>
+                                <div class="testimonial-rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Compré diamantes para Free Fire y llegaron en 2 minutos. Los precios son los mejores que he visto."</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="img/user-3.jpg" alt="Juan R." class="testimonial-avatar">
+                            <div class="testimonial-user">
+                                <h3 class="testimonial-name">Juan R.</h3>
+                                <div class="testimonial-rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"El soporte al cliente es excelente. Tuve un problema y lo resolvieron en menos de 10 minutos."</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Bottom Navigation (Mobile) -->
+        <nav class="bottom-nav d-lg-none">
+            <a href="#" class="nav-item active">
+                <i class="bi bi-house nav-icon"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="#recargas" class="nav-item">
+                <i class="bi bi-phone nav-icon"></i>
+                <span>Recargas</span>
+            </a>
+            <a href="#diamantes" class="nav-item">
+                <i class="bi bi-gem nav-icon"></i>
+                <span>Diamantes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="bi bi-person nav-icon"></i>
+                <span>Cuenta</span>
+            </a>
+        </nav>
+        
+        <!-- WhatsApp FAB -->
+       
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.min.js"></script>
     
     <script>
-        // Hero Slider
-        const heroSlides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        
-        function showSlide(n) {
-            heroSlides.forEach(slide => slide.classList.remove('active'));
-            heroSlides[n].classList.add('active');
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % heroSlides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Cambiar slide cada 5 segundos
-        setInterval(nextSlide, 5000);
-        
-        // Service Worker para PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(reg => console.log('Service Worker registrado correctamente', reg))
-                    .catch(err => console.log('Error al registrar Service Worker', err));
+        document.addEventListener('DOMContentLoaded', function() {
+            // Actualizar hora en la status bar (mobile)
+            function updateTime() {
+                const now = new Date();
+                const timeElement = document.getElementById('current-time');
+                if (timeElement) {
+                    timeElement.textContent = now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0');
+                }
+            }
+            
+            updateTime();
+            setInterval(updateTime, 60000);
+            
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const appSidebar = document.getElementById('appSidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            
+            if (mobileMenuToggle && appSidebar && sidebarOverlay) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    appSidebar.classList.add('open');
+                    sidebarOverlay.classList.add('open');
+                });
+                
+                sidebarOverlay.addEventListener('click', function() {
+                    appSidebar.classList.remove('open');
+                    sidebarOverlay.classList.remove('open');
+                });
+            }
+            
+            // Activar nav item según scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+            const desktopNavItems = document.querySelectorAll('.desktop-nav-item');
+            
+            function updateActiveNav() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id') || 'home';
+                    }
+                });
+                
+                // Mobile nav
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    const href = item.getAttribute('href');
+                    if (href === `#${current}` || (current === 'home' && href === '#')) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                // Desktop nav
+                desktopNavItems.forEach(item => {
+                    item.classList.remove('active');
+                    const href = item.getAttribute('href');
+                    if (href === `#${current}` || (current === 'home' && href === '#')) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav();
+            
+            // Cerrar sidebar al hacer clic en un enlace (mobile)
+            const navLinks = document.querySelectorAll('.desktop-nav-item, .nav-item');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 992) {
+                        appSidebar.classList.remove('open');
+                        sidebarOverlay.classList.remove('open');
+                    }
+                });
             });
-        }
+            
+            // Service Worker para PWA
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('Service Worker registrado correctamente', reg))
+                        .catch(err => console.log('Error al registrar Service Worker', err));
+                });
+            }
+        });
     </script>
 </body>
 </html>
