@@ -1,0 +1,16 @@
+{
+  "name": "TokTok - Recargas y Diamantes",
+  "short_name": "TokTok",
+  "description": "Recargas móviles y diamantes para juegos al instante. Servicio rápido, seguro y confiable.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "img/logo2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+  ]
+}
